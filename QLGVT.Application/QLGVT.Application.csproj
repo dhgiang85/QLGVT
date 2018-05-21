@@ -4,4 +4,17 @@
     <TargetFramework>netcoreapp2.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\QLGVT.Data.EF\QLGVT.Data.EF.csproj" />
+    <ProjectReference Include="..\QLGVT.Data\QLGVT.Data.csproj" />
+    <ProjectReference Include="..\QLGVT.Utilities\QLGVT.Utilities.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="AutoMapper\" />
+    <Folder Include="Implementation\" />
+    <Folder Include="Interfaces\" />
+    <Folder Include="ViewModels\" />
+  </ItemGroup>
+
 </Project>

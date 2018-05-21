@@ -18,4 +18,12 @@
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.4" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\QLGVT.Application\QLGVT.Application.csproj" />
+    <ProjectReference Include="..\QLGVT.Data.EF\QLGVT.Data.EF.csproj" />
+    <ProjectReference Include="..\QLGVT.Data\QLGVT.Data.csproj" />
+    <ProjectReference Include="..\QLGVT.Infrastructure\QLGVT.Infrastructure.csproj" />
+    <ProjectReference Include="..\QLGVT.Utilities\QLGVT.Utilities.csproj" />
+  </ItemGroup>
+
 </Project>
