@@ -27,10 +27,15 @@ namespace QLGVT.Data.EF
         public DbSet<Function> Functions { get; set; }
         public DbSet<Permission> Permissions { get; set; }
         
-
-
         public DbSet<SystemConfig> SystemConfigs { get; set; }
         public DbSet<Footer> Footers { set; get; }
+        public DbSet<Slide> Slides { set; get; }
+
+        public DbSet<DonviVantai> DonviVantais { set; get; }
+
+        public DbSet<Benxe> Benxes { set; get; }
+        public DbSet<Tuyen> Tuyens { set; get; }
+        public DbSet<DangkyTuyen> DangkyTuyens { set; get; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -54,7 +59,7 @@ namespace QLGVT.Data.EF
 
             builder.AddConfiguration(new FunctionConfiguration());
             builder.AddConfiguration(new FooterConfiguration());
-
+            builder.AddConfiguration(new TuyenConfiguration());
             base.OnModelCreating(builder);
         }
 

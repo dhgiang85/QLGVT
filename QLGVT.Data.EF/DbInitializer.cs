@@ -51,12 +51,12 @@ namespace QLGVT.Data.EF
                 {
                     UserName = "admin",
                     FullName = "Administrator",
-                    Email = "admin@gmail.com",
+                    Email = "mcst@gmail.com",
                     Balance = 0,
                     DateCreated = DateTime.Now,
                     DateModified = DateTime.Now,
                     Status = Status.Active
-                }, "123654$");
+                }, "Abcd1234");
                 var user = await _userManager.FindByNameAsync("admin");
                 await _userManager.AddToRoleAsync(user, "Admin");
             }
@@ -91,8 +91,58 @@ namespace QLGVT.Data.EF
                     new Function() {Id = "READER",Name = "Reader Report",ParentId = "REPORT",SortOrder = 3,Status = Status.Active,URL = "/admin/report/reader",IconCss = "fa-bar-chart-o"  },
                 });
             }
-            
+            if (_context.Slides.Count() == 0)
+            {
+                List<Slide> slides = new List<Slide>()
+                {
+                    new Slide() {Name="Slide 1",Image="/client-side/images/slider/slide-1.jpg",Url="#",DisplayOrder = 0,GroupAlias = "top",Status = true },
+                    new Slide() {Name="Slide 2",Image="/client-side/images/slider/slide-2.jpg",Url="#",DisplayOrder = 1,GroupAlias = "top",Status = true },
+                    new Slide() {Name="Slide 3",Image="/client-side/images/slider/slide-3.jpg",Url="#",DisplayOrder = 2,GroupAlias = "top",Status = true },
 
+                    new Slide() {Name="Slide 1",Image="/client-side/images/brand1.png",Url="#",DisplayOrder = 1,GroupAlias = "brand",Status = true },
+                    new Slide() {Name="Slide 2",Image="/client-side/images/brand2.png",Url="#",DisplayOrder = 2,GroupAlias = "brand",Status = true },
+                    new Slide() {Name="Slide 3",Image="/client-side/images/brand3.png",Url="#",DisplayOrder = 3,GroupAlias = "brand",Status = true },
+                    new Slide() {Name="Slide 4",Image="/client-side/images/brand4.png",Url="#",DisplayOrder = 4,GroupAlias = "brand",Status = true },
+                    new Slide() {Name="Slide 5",Image="/client-side/images/brand5.png",Url="#",DisplayOrder = 5,GroupAlias = "brand",Status = true },
+                    new Slide() {Name="Slide 6",Image="/client-side/images/brand6.png",Url="#",DisplayOrder = 6,GroupAlias = "brand",Status = true },
+                    new Slide() {Name="Slide 7",Image="/client-side/images/brand7.png",Url="#",DisplayOrder = 7,GroupAlias = "brand",Status = true },
+                    new Slide() {Name="Slide 8",Image="/client-side/images/brand8.png",Url="#",DisplayOrder = 8,GroupAlias = "brand",Status = true },
+                    new Slide() {Name="Slide 9",Image="/client-side/images/brand9.png",Url="#",DisplayOrder = 9,GroupAlias = "brand",Status = true },
+                    new Slide() {Name="Slide 10",Image="/client-side/images/brand10.png",Url="#",DisplayOrder = 10,GroupAlias = "brand",Status = true },
+                    new Slide() {Name="Slide 11",Image="/client-side/images/brand11.png",Url="#",DisplayOrder = 11,GroupAlias = "brand",Status = true },
+                };
+                _context.Slides.AddRange(slides);
+            }
+            if (_context.DonviVantais.Count() == 0)
+            {
+                _context.DonviVantais.AddRange(new List<DonviVantai>()
+                {
+                    new DonviVantai() { Ten = "don vi 1",Diachi = "1",GPKinhdoanh = "1",LHKinhdoanh = LHKinhDoanh.TuyenCodinh,Status = Status.Active},
+                    new DonviVantai() { Ten = "don vi 2",Diachi = "2",GPKinhdoanh = "2",LHKinhdoanh = LHKinhDoanh.TuyenCodinh,Status = Status.Active},
+                    new DonviVantai() { Ten = "don vi 2",Diachi = "2",GPKinhdoanh = "2",LHKinhdoanh = LHKinhDoanh.TuyenCodinh,Status = Status.Active},
+                    new DonviVantai() { Ten = "don vi 2",Diachi = "2",GPKinhdoanh = "2",LHKinhdoanh = LHKinhDoanh.TuyenCodinh,Status = Status.Active},
+                    new DonviVantai() { Ten = "don vi 2",Diachi = "2",GPKinhdoanh = "2",LHKinhdoanh = LHKinhDoanh.TuyenCodinh,Status = Status.Active},
+                    new DonviVantai() { Ten = "don vi 2",Diachi = "2",GPKinhdoanh = "2",LHKinhdoanh = LHKinhDoanh.TuyenCodinh,Status = Status.Active},
+                    new DonviVantai() { Ten = "don vi 2",Diachi = "2",GPKinhdoanh = "2",LHKinhdoanh = LHKinhDoanh.TuyenCodinh,Status = Status.Active},
+                    new DonviVantai() { Ten = "don vi 2",Diachi = "2",GPKinhdoanh = "2",LHKinhdoanh = LHKinhDoanh.TuyenCodinh,Status = Status.Active},
+                    new DonviVantai() { Ten = "don vi 2",Diachi = "2",GPKinhdoanh = "2",LHKinhdoanh = LHKinhDoanh.TuyenCodinh,Status = Status.Active},
+                    new DonviVantai() { Ten = "don vi 2",Diachi = "2",GPKinhdoanh = "2",LHKinhdoanh = LHKinhDoanh.TuyenCodinh,Status = Status.Active},
+                    new DonviVantai() { Ten = "don vi 2",Diachi = "2",GPKinhdoanh = "2",LHKinhdoanh = LHKinhDoanh.TuyenCodinh,Status = Status.Active},
+                    new DonviVantai() { Ten = "don vi 2",Diachi = "2",GPKinhdoanh = "2",LHKinhdoanh = LHKinhDoanh.TuyenCodinh,Status = Status.Active},
+                    new DonviVantai() { Ten = "don vi 2",Diachi = "2",GPKinhdoanh = "2",LHKinhdoanh = LHKinhDoanh.TuyenCodinh,Status = Status.Active},
+                    new DonviVantai() { Ten = "don vi 2",Diachi = "2",GPKinhdoanh = "2",LHKinhdoanh = LHKinhDoanh.TuyenCodinh,Status = Status.Active},
+                    new DonviVantai() { Ten = "don vi 2",Diachi = "2",GPKinhdoanh = "2",LHKinhdoanh = LHKinhDoanh.TuyenCodinh,Status = Status.Active},
+                    new DonviVantai() { Ten = "don vi 2",Diachi = "2",GPKinhdoanh = "2",LHKinhdoanh = LHKinhDoanh.TuyenCodinh,Status = Status.Active},
+                    new DonviVantai() { Ten = "don vi 2",Diachi = "2",GPKinhdoanh = "2",LHKinhdoanh = LHKinhDoanh.TuyenCodinh,Status = Status.Active},
+                    new DonviVantai() { Ten = "don vi 2",Diachi = "2",GPKinhdoanh = "2",LHKinhdoanh = LHKinhDoanh.TuyenCodinh,Status = Status.Active},
+                    new DonviVantai() { Ten = "don vi 2",Diachi = "2",GPKinhdoanh = "2",LHKinhdoanh = LHKinhDoanh.TuyenCodinh,Status = Status.Active},
+                    new DonviVantai() { Ten = "don vi 2",Diachi = "2",GPKinhdoanh = "2",LHKinhdoanh = LHKinhDoanh.TuyenCodinh,Status = Status.Active},
+                    new DonviVantai() { Ten = "don vi 2",Diachi = "2",GPKinhdoanh = "2",LHKinhdoanh = LHKinhDoanh.TuyenCodinh,Status = Status.Active},
+                    new DonviVantai() { Ten = "don vi 2",Diachi = "2",GPKinhdoanh = "2",LHKinhdoanh = LHKinhDoanh.TuyenCodinh,Status = Status.Active},
+                    new DonviVantai() { Ten = "don vi 2",Diachi = "2",GPKinhdoanh = "2",LHKinhdoanh = LHKinhDoanh.TuyenCodinh,Status = Status.Active},
+
+                });
+            }
             if (!_context.SystemConfigs.Any(x => x.Id == "HomeTitle"))
             {
                 _context.SystemConfigs.Add(new SystemConfig()

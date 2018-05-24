@@ -1,0 +1,105 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+
+@section Scripts{
+
+    <script src="~/admin-app/controllers/donvi-vantai/index.js"></script>
+    <script>
+        var DonviVantai = new DonviVantaiController();
+        DonviVantai.initialize();
+    </script>
+}
+<div class="page-title">
+    <div class="title_left">
+        <h3>Quản lý đơn vị <small>Danh sách đơn vị</small></h3>
+    </div>
+
+    <div class="title_right">
+        <div class="col-md-6  form-group pull-right">
+
+            <div class="input-group">
+                <input type="text" id="txtKeyword" class="form-control" placeholder="Search for...">
+                <span class="input-group-btn">
+                    <button class="btn btn-primary" id="btnSearch" type="button">Go!</button>
+                </span>
+            </div>
+        </div>
+        @*<div class="col-md-3 col-sm-12  form-group pull-right">
+            <select class="form-control" id="ddlCategorySearch">
+                <option>--Select category--</option>
+            </select>
+        </div>*@
+        <div class="col-md-6 form-group pull-right">
+            <button id="btnCreate" class="btn btn-success"><i class="fa fa-plus"></i></button>
+            <a class="btn btn-danger" href="~/templates/ProductImportTemplate.xlsx"><i class="fa fa-database"></i></a>
+            <button class="btn btn-primary" id="btn-import" type="button"><i class="fa fa-file-excel-o"></i></button>
+            <button class="btn btn-default" id="btn-export" type="button"><i class="fa fa-download"></i></button>
+
+        </div>
+    </div>
+</div>
+<div class="clearfix"></div>
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_content">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Tên</th>
+                            <th>Địa chỉ</th>
+                            <th>Giấy phép Kinh doanh</th>
+                            <th>Loại hình Kinh doanh</th>
+                            <th>Status</th>
+                            <th width="8%">#</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbl-content"></tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="7"><span class="pull-right">Tổng số bản ghi: <strong id="lblTotalRecords"></strong></span></td>
+                        </tr>
+                    </tfoot>
+                </table>
+                <!--Pagination-->
+
+                <div class="row">
+                    <div class="col-md-2">
+                        <div class="dataTables_info" id="datatable-checkbox_info" role="status" aria-live="polite">
+                            <select class="form-control fixed" id="ddlShowPage">
+                                <option value="10" selected="selected">10</option>
+                                <option value="20">20</option>
+                                <option value="30">30</option>
+                                <option value="50">50</option>
+                            </select>
+                     </div>
+                    </div><div class="col-md-10">
+                        
+                            <ul class="pull-right" id="paginationUL" style="margin:0px"></ul>
+                     
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script id="table-template" type="x-tmpl-mustache">
+    <tr>
+
+        <td>{{Id}}</td>
+        <td>{{Ten}}</td>
+        <td>{{Diachi}}</td>
+        <td>{{GPKinhdoanh}}</td>
+        <td>{{LHKinhdoanh}}</td>
+        <td>{{{Status}}}</td>
+        <th scope="row">
+            <button class="btn btn-default btn-xs btnEdit" data-id="{{Id}}"><i class="fa fa-pencil"></i></button>
+            <button class="btn btn-danger btn-xs btnDelete" data-id="{{Id}}"><i class="fa fa-trash"></i></button>
+
+        </th>
+    </tr>
+</script>
+@Html.Partial("_AddEditModal.cshtml")
