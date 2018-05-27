@@ -205,7 +205,7 @@
     function loadDetails(id) {
         $.ajax({
             type: "GET",
-            url: "/Admin/donvivantai/GetById",
+            url: "/Admin/tuyen/GetById",
             data: { id: id },
             dataType: "json",
             beforeSend: function () {
@@ -215,13 +215,11 @@
                 var data = response;
                 $('#frmMaintainance').validate().resetForm();
                 $('#hidIdM').val(data.Id);
-                $('#txtTenM').val(data.Ten);
-     
-
-                $('#txtDiachiM').val(data.Diachi);
-                $('#txtGPKinhdoanhM').val(data.GPKinhdoanh);
-                $('#ddlLHKinhdoanh').val(data.LHKinhdoanh);
-
+                $('#ddlXuatphat').val(data.XuatphatId);
+                
+                $('#ddlDiemden').val(data.DiemdenId);
+                $('#txtKhoangcachM').val(data.Khoangcach);
+    
                 $('#ckStatusM').prop('checked', data.Status == 1);
             
                 
@@ -240,7 +238,7 @@
         mcst.confirm('Are you sure to delete?', function () {
             $.ajax({
                 type: "POST",
-                url: "/Admin/donvivantai/Delete",
+                url: "/Admin/tuyen/Delete",
                 data: { id: id },
                 dataType: "json",
                 beforeSend: function () {

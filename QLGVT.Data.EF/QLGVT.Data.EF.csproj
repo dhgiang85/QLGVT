@@ -5,6 +5,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20180525050321_intial.cs" />
+    <Compile Remove="Migrations\20180525050551_intial.cs" />
+    <Compile Remove="Migrations\20180525050622_intial.cs" />
+    <Compile Remove="Migrations\20180525050745_intial.cs" />
+    <Compile Remove="Migrations\20180525050822_intial.cs" />
+    <Compile Remove="Migrations\20180525050920_intial.cs" />
+    <Compile Remove="Migrations\20180525051253_intial.cs" />
+    <Compile Remove="Migrations\20180525051415_intial.cs" />
+    <Compile Remove="Migrations\20180525051550_intial.cs" />
+    <Compile Remove="Migrations\20180525051836_intial.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\QLGVT.Data\QLGVT.Data.csproj" />
     <ProjectReference Include="..\QLGVT.Infrastructure\QLGVT.Infrastructure.csproj" />
     <ProjectReference Include="..\QLGVT.Utilities\QLGVT.Utilities.csproj" />

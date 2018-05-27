@@ -12,8 +12,8 @@ using System;
 namespace QLGVT.Data.EF.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20180524084409_tuyen2")]
-    partial class tuyen2
+    [Migration("20180525062135_intial")]
+    partial class intial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -512,7 +512,7 @@ namespace QLGVT.Data.EF.Migrations
                     b.HasOne("QLGVT.Data.Entities.Benxe", "Diemden")
                         .WithMany()
                         .HasForeignKey("DiemdenId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("QLGVT.Data.Entities.Benxe", "Xuatphat")
                         .WithMany()

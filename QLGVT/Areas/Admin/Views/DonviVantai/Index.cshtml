@@ -5,6 +5,7 @@
 @section Scripts{
 
     <script src="~/admin-app/controllers/donvi-vantai/index.js"></script>
+    <script src="~/admin-app/controllers/donvi-vantai/dangkytuyen.js"></script>
     <script>
         var DonviVantai = new DonviVantaiController();
         DonviVantai.initialize();
@@ -26,10 +27,10 @@
             </div>
         </div>
         @*<div class="col-md-3 col-sm-12  form-group pull-right">
-            <select class="form-control" id="ddlCategorySearch">
-                <option>--Select category--</option>
-            </select>
-        </div>*@
+                <select class="form-control" id="ddlCategorySearch">
+                    <option>--Select category--</option>
+                </select>
+            </div>*@
         <div class="col-md-6 form-group pull-right">
             <button id="btnCreate" class="btn btn-success"><i class="fa fa-plus"></i></button>
             <a class="btn btn-danger" href="~/templates/ProductImportTemplate.xlsx"><i class="fa fa-database"></i></a>
@@ -54,7 +55,7 @@
                             <th>Giấy phép Kinh doanh</th>
                             <th>Loại hình Kinh doanh</th>
                             <th>Status</th>
-                            <th width="8%">#</th>
+                            <th width="12%">#</th>
                         </tr>
                     </thead>
                     <tbody id="tbl-content"></tbody>
@@ -75,11 +76,11 @@
                                 <option value="30">30</option>
                                 <option value="50">50</option>
                             </select>
-                     </div>
+                        </div>
                     </div><div class="col-md-10">
-                        
-                            <ul class="pull-right" id="paginationUL" style="margin:0px"></ul>
-                     
+
+                        <ul class="pull-right" id="paginationUL" style="margin:0px"></ul>
+
                     </div>
                 </div>
             </div>
@@ -98,8 +99,10 @@
         <th scope="row">
             <button class="btn btn-default btn-xs btnEdit" data-id="{{Id}}"><i class="fa fa-pencil"></i></button>
             <button class="btn btn-danger btn-xs btnDelete" data-id="{{Id}}"><i class="fa fa-trash"></i></button>
+            <a href="#" data-id="{{Id}}" class="btn btn-default  btn-xs btnDSDangky"><i class="fa fa-truck"></i></a>
 
         </th>
     </tr>
 </script>
 @Html.Partial("_AddEditModal.cshtml")
+@Html.Partial("_QuanlyTuyenModal.cshtml")

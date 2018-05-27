@@ -34,6 +34,8 @@ namespace QLGVT.Application.AutoMapper
 
             CreateMap<Tuyen, TuyenViewModel>().MaxDepth(2);
 
+            CreateMap<DangkyTuyen, DangkyTuyenViewModel>().MaxDepth(2);
+
 
         }
     }

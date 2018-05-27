@@ -14,6 +14,7 @@ namespace QLGVT.Data.Entities
     {
         public Benxe()
         {
+          
         }
         public Benxe(string ten, string description,int sortOrder, Status status)
         {
@@ -37,6 +38,8 @@ namespace QLGVT.Data.Entities
         public DateTime DateCreated { get; set; }
 
         public DateTime DateModified { get; set; }
-        
+
+
+
     }
 }

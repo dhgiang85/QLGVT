@@ -283,7 +283,6 @@ namespace QLGVT.Data.EF.Migrations
                     DateModified = table.Column<DateTime>(nullable: false),
                     DiemdenId = table.Column<int>(nullable: false),
                     Khoangcach = table.Column<int>(nullable: false),
-                    SortOrder = table.Column<int>(nullable: false),
                     Status = table.Column<int>(nullable: false),
                     XuatphatId = table.Column<int>(nullable: false)
                 },
@@ -295,7 +294,7 @@ namespace QLGVT.Data.EF.Migrations
                         column: x => x.DiemdenId,
                         principalTable: "Benxes",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Tuyens_Benxes_XuatphatId",
                         column: x => x.XuatphatId,

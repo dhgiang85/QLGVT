@@ -27,13 +27,7 @@ namespace QLGVT.Data.Entities
 
         [Column(Order = 2)]
         public int DiemdenId { get; set; }
-
-        [ForeignKey("XuatphatId")]
-        public virtual Benxe Xuatphat { get; set; }
-
-        [ForeignKey("DiemdenId")]
-        public virtual Benxe Diemden { get; set; }
-
+        
         public int Khoangcach { get; set; }
         
         public Status Status { get; set; }
@@ -41,6 +35,12 @@ namespace QLGVT.Data.Entities
         public DateTime DateCreated { get; set; }
 
         public DateTime DateModified { get; set; }
+
+        [ForeignKey("XuatphatId")]
+        public virtual Benxe Xuatphat { get; set; }
+
+        [ForeignKey("DiemdenId")]
+        public virtual Benxe Diemden { get; set; }
 
     }
 }

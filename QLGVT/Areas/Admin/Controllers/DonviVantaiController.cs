@@ -34,7 +34,7 @@ namespace QLGVT.Areas.Admin.Controllers
             _hostingEnvironment = hostingEnvironment;
         }
 
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
             //var email = User.GetSpecificClaim("Email");
             return View();
@@ -82,7 +82,13 @@ namespace QLGVT.Areas.Admin.Controllers
                 return new OkObjectResult(donviVantaiVm);
             }
         }
-
+        [HttpPost]
+        public IActionResult SaveTuyens(int donvivantaiId, List<DangkyTuyenViewModel> tuyens)
+        {
+            _donviVantaiService.AddTuyen(donvivantaiId, tuyens);
+            _donviVantaiService.Save();
+            return new OkObjectResult(tuyens);
+        }
         [HttpGet]
         public IActionResult GetById(int id)
         {
@@ -104,6 +110,14 @@ namespace QLGVT.Areas.Admin.Controllers
 
                 return new OkObjectResult(id);
             }
+        }
+
+        [HttpGet]
+        public IActionResult GetTuyens(int donvivantaiId)
+        {
+            var model = _donviVantaiService.GetTuyens(donvivantaiId);
+
+            return new OkObjectResult(model);
         }
     }
 }

@@ -17,11 +17,15 @@ namespace QLGVT.Application.Implementation
         private IUnitOfWork _unitOfWork;
 
         private IBenxeRepository _benxeRepository;
+        private ITuyenRepository _tuyenRepository;
 
-        public BenxeService(IUnitOfWork unitOfWork, IBenxeRepository benxeRepository)
+        public BenxeService(IUnitOfWork unitOfWork, 
+            IBenxeRepository benxeRepository,
+            ITuyenRepository tuyenRepository)
         {
             _unitOfWork = unitOfWork;
             _benxeRepository = benxeRepository;
+            _tuyenRepository = tuyenRepository;
         }
         public BenxeViewModel Add(BenxeViewModel benxeVm)
         {
@@ -44,8 +48,12 @@ namespace QLGVT.Application.Implementation
 
         public void Delete(int id)
         {
-           _benxeRepository.Remove(id);
-        }
+            var benxe = _benxeRepository.FindById(id);
+            var tuyen = _tuyenRepository.FindSingle(x => x.XuatphatId == benxe.Id);
+            if (tuyen != null)
+                _tuyenRepository.Remove(tuyen);
+            _benxeRepository.Remove(id);
+        }   
 
         public List<BenxeViewModel> GetAll()
         {

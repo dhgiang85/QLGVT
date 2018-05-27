@@ -511,7 +511,7 @@ namespace QLGVT.Data.EF.Migrations
                     b.HasOne("QLGVT.Data.Entities.Benxe", "Diemden")
                         .WithMany()
                         .HasForeignKey("DiemdenId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("QLGVT.Data.Entities.Benxe", "Xuatphat")
                         .WithMany()

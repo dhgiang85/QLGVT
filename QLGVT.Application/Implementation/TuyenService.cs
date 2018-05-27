@@ -51,14 +51,14 @@ namespace QLGVT.Application.Implementation
             return Mapper.Map<Tuyen, TuyenViewModel>(_tuyenRepository.FindById(id));
         }
 
-        public Task<List<TuyenViewModel>> GetAll(string filter)
+        public List<TuyenViewModel> GetAll()
         {
-            return _tuyenRepository.FindAll(x => x.Status == Status.Active).ProjectTo<TuyenViewModel>().ToListAsync();
+            return _tuyenRepository.FindAll(x => x.Status == Status.Active).ProjectTo<TuyenViewModel>().ToList();
         }
 
         public PagedResult<TuyenViewModel> GetAllPaging(string keyword, int page, int pageSize)
         {
-            var query = _tuyenRepository.FindAll(x => x.Status == Status.Active);
+            var query = _tuyenRepository.FindAll();
             //if (!string.IsNullOrEmpty(keyword))
             //    query = query.Where(x => x.Status==Status.Active);
 

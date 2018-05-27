@@ -18,6 +18,10 @@ namespace QLGVT.Application.Interfaces
 
         void Update(DonviVantaiViewModel donviVantai);
 
+        List<DangkyTuyenViewModel> GetTuyens(int donvivantaiId);
+
+        void AddTuyen(int donvivantaiId, List<DangkyTuyenViewModel> tuyens);
+
         void Delete(int id);
 
         void Save();

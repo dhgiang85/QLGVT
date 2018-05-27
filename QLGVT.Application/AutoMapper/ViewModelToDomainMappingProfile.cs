@@ -28,6 +28,9 @@ namespace QLGVT.Application.AutoMapper
 
             CreateMap<TuyenViewModel, Tuyen>()
                 .ConstructUsing(c => new Tuyen(c.XuatphatId, c.DiemdenId, c.Khoangcach, c.Status));
+
+            CreateMap<DangkyTuyenViewModel, DangkyTuyen>()
+                .ConstructUsing(c => new DangkyTuyen(c.Id,c.DonviVantaiId, c.TuyenId, c.Status));
         }
     }
 }

@@ -21,11 +21,17 @@ namespace QLGVT.Application.Implementation
 
         private IUnitOfWork _unitOfWork;
         private IDonviVantaiReposiory _donviVantaiReposiory;
+        private IDangkyTuyenRepository _dangkyTuyenRepository;
         
         public DonviVantaiService(IDonviVantaiReposiory donviVantaiReposiory,
+            IDangkyTuyenRepository dangkyTuyenRepository,
             IUnitOfWork unitOfWork)
         {
             _donviVantaiReposiory = donviVantaiReposiory;
+
+            _dangkyTuyenRepository = dangkyTuyenRepository;
+
+
             _unitOfWork = unitOfWork;
         }
 
@@ -42,6 +48,32 @@ namespace QLGVT.Application.Implementation
             _donviVantaiReposiory.Update(donviVantai);
         }
 
+        public List<DangkyTuyenViewModel> GetTuyens(int donvivantaiId)
+        {
+            return _dangkyTuyenRepository.FindAll(x => x.DonviVantaiId == donvivantaiId)
+                .ProjectTo<DangkyTuyenViewModel>()
+                .ToList();
+        }
+        public void AddTuyen(int donvivantaiId, List<DangkyTuyenViewModel> tuyens)
+        {
+
+            var newTuyenVm = tuyens.Where(x => x.Id == 0).ToList();
+            var updatedTuyenVm = tuyens.Where(x => x.Id != 0).ToList();
+            var existedTuyes = _dangkyTuyenRepository.FindAll(x => x.DonviVantaiId == donvivantaiId);
+
+            var newTuyens = Mapper.Map<List<DangkyTuyenViewModel>, List<DangkyTuyen>>(newTuyenVm);
+            foreach (var tuyen in newTuyens)
+            {
+                _dangkyTuyenRepository.Add(tuyen);
+            }
+
+            var updatedTuyens = Mapper.Map<List<DangkyTuyenViewModel>, List<DangkyTuyen>>(updatedTuyenVm);
+            foreach (var tuyen in updatedTuyens)
+            {
+                _dangkyTuyenRepository.Update(tuyen);
+            }
+            _dangkyTuyenRepository.RemoveMultiple(existedTuyes.Except(updatedTuyens).ToList());
+        }
         public void Delete(int id)
         {
             _donviVantaiReposiory.Remove(id);

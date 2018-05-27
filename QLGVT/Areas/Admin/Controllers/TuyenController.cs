@@ -48,7 +48,17 @@ namespace QLGVT.Areas.Admin.Controllers
             return new OkObjectResult(model);
 
         }
+        [HttpGet]
+        public IActionResult GetTuyens()
+        {
+            var model = _tuyenService.GetAll().Select(x => new SelectListItem()
+            {
+                Text = x.Xuatphat.Ten + " - " + x.Diemden.Ten + " (" + x.Khoangcach + " km)",
+                Value = x.Id.ToString()
+            }).ToList();
+            return new OkObjectResult(model);
 
+        }
         [HttpPost]
         public IActionResult SaveEntity(TuyenViewModel tuyenVm)
         {
@@ -72,6 +82,29 @@ namespace QLGVT.Areas.Admin.Controllers
                 _tuyenService.Save();
                 return new OkObjectResult(tuyenVm);
 
+            }
+        }
+
+        [HttpGet]
+        public IActionResult GetById(int id)
+        {
+            var model = _tuyenService.GetById(id);
+
+            return new OkObjectResult(model);
+        }
+        [HttpPost]
+        public IActionResult Delete(int id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return new BadRequestObjectResult(ModelState);
+            }
+            else
+            {
+                _tuyenService.Delete(id);
+                _tuyenService.Save();
+
+                return new OkObjectResult(id);
             }
         }
     }

@@ -11,7 +11,7 @@ namespace QLGVT.Application.Interfaces
     {
         void Add(TuyenViewModel tuyenVm);
 
-        Task<List<TuyenViewModel>> GetAll(string filter);
+        List<TuyenViewModel> GetAll();
 
         PagedResult<TuyenViewModel> GetAllPaging(string keyword, int page, int pageSize);
 

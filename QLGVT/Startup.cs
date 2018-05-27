@@ -104,6 +104,8 @@ namespace QLGVT
 
             services.AddTransient<ITuyenRepository, TuyenRepository>();
 
+            services.AddTransient<IDangkyTuyenRepository, DangkyTuyenRepository>();
+
             //Serrvices
             services.AddTransient<IFunctionService, FunctionService>();
 
@@ -121,6 +123,8 @@ namespace QLGVT
             services.AddTransient<IBenxeService, BenxeService>();
 
             services.AddTransient<ITuyenService, TuyenService>();
+
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
