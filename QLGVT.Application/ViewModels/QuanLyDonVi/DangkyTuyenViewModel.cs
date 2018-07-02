@@ -13,6 +13,12 @@ namespace QLGVT.Application.ViewModels.QuanLyDonVi
         
         public int TuyenId { get; set; }
 
+        public string Note { get; set; }
+
         public Status Status { get; set; }
+
+        public TuyenViewModel Tuyen { get; set; }
+
+        public DonviVantaiViewModel DonviVantai { get; set; }
     }
 }

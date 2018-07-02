@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using QLGVT.Application.ViewModels.QuanLyDonVi;
+using QLGVT.Application.ViewModels.QuanlyGia;
 using QLGVT.Utilities.Dtos;
 
 namespace QLGVT.Application.Interfaces
@@ -21,6 +22,11 @@ namespace QLGVT.Application.Interfaces
         List<DangkyTuyenViewModel> GetTuyens(int donvivantaiId);
 
         void AddTuyen(int donvivantaiId, List<DangkyTuyenViewModel> tuyens);
+
+
+        void AddDongia(KekhaiGiaViewModel KKGVm);
+
+        KekhaiGiaCalculatorViewModel GetBaseValue(int DKTuyenId);
 
         void Delete(int id);
 

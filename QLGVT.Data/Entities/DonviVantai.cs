@@ -77,7 +77,7 @@ namespace QLGVT.Data.Entities
 
         public string SeoDescription { get; set; }
 
-        public virtual ICollection<DangkyTuyen> DangkyTuyens { set; get; }
-
+        public virtual ICollection<DangkyTuyen> DangkyTuyens { set; get; }     
+        
     }
 }

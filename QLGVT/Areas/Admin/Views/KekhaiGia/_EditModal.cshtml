@@ -1,0 +1,474 @@
+﻿<div id="modalEditDongia" class="bootbox fade modal modal-darkorange in" tabindex="-2" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Đơn giá</h4>
+            </div>
+            <div class="modal-body">
+                <div id="horizontal-form">
+                    <form class="form-horizontal" role="form" id="frmDongiaMaintainance">
+                        <input type="hidden" id="hidDonGiaId" value="0" />
+                        <input type="hidden" id="hidDKTuyenId" value="0" />
+                        <input type="hidden" id="hidDonGiaBaseId" value="0" />
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>STT</th>
+                                    <th>Chi phí sản giá thành</th>
+                                    <th>Đơn vị</th>
+                                    <th class="no-padding-right">Kỳ trước</th>
+                                    <th>Kỳ này</th>
+                                    <th>Tỷ lệ (%)</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+
+                                    <td class="col-sm-1 text-center"></td>
+                                    <td class="col-sm-6">
+                                        <b class="pull-right clearfix">Ngày áp dụng</b>
+                                    </td>
+                                    <td class="col-sm-1">
+                                        <b></b>
+                                    </td>
+                                    <td class="no-padding-right">
+                                        <input type="text" readonly="readonly" class="col-sm-12 value no-padding no-border text-right" id="txtDateAppliedBVM">
+                                    </td>
+                                    <td class="no-padding-right">
+                                        <input type="text" class="col-sm-12 value no-padding text-right" id="txtDateAppliedVM">
+                                    </td>
+                                    <td class="col-sm-1"></td>
+                                </tr>
+                                <tr>
+                                    <td class="col-sm-1 text-center">
+                                        <b>A</b>
+                                    </td>
+
+                                    <td class="col-sm-6">
+                                        <b>Sản lượng tính giá (Q)</b>
+                                    </td>
+
+                                    <td class="col-sm-1">
+                                        <b>HK.Km</b>
+                                    </td>
+                                    <td class="no-padding-right">
+                                        <input type="number" name="txtSLTGBVM" readonly="readonly" class="col-sm-12 value no-padding no-border text-right" id="txtSLTGBVM">
+                                    </td>
+                                    <td class="no-padding-right">
+                                        <input type="number" name="txtSLTGVM" class="col-sm-12 value no-padding text-right" id="txtSLTGVM">
+                                    </td>
+                                    <td class="col-sm-1 no-padding-right">
+                                        @*<span></span>
+                <input type="number" readonly="readonly" name="txtSLTGRateVM" class="col-sm-12 no-padding no-border text-center" id="txtSLTGRateVM">*@
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td class="col-sm-1 text-center">
+                                        <b>B</b>
+                                    </td>
+
+                                    <td class="col-sm-6">
+                                        <b>Chi phí sản xuất, kinh doanh</b>
+                                    </td>
+
+                                    <td class="col-sm-1">
+                                        <b>đồng/HK.Km</b>
+                                    </td>
+                                    <td class="no-padding-right">
+                                        <b><input type="number" name="txtTotalB" readonly="readonly" class="col-sm-12 value no-padding no-border text-right" id="txtTotalB"></b>
+                                    </td>
+                                    <td class="no-padding-right">
+                                        <b><input type="number" name="txtTotalB" readonly="readonly" class="col-sm-12 value no-padding no-border text-right" id="txtTotal"></b>
+                                    </td>
+                                    <td class="col-sm-1 no-padding-right"></td>
+
+                                </tr>
+                                <tr>
+                                    <td class="col-sm-1 text-center">
+                                        <b>I</b>
+                                    </td>
+
+                                    <td class="col-sm-6">
+                                        <b>Chi phí trực tiếp</b>
+                                    </td>
+                                    <td class="col-sm-1">
+                                        <b>đồng/HK.Km</b>
+                                    </td>
+                                    <td class="no-padding-right">
+                                        <b><input type="number" readonly="readonly" name="txtTotalCPTT" class="col-sm-12 value no-padding no-border text-right" id="txtTotalCPTTB"></b>
+                                    </td>
+                                    <td class="no-padding-right">
+                                        <b><input type="number" readonly="readonly" name="txtTotalCPTT" class="col-sm-12 value no-padding no-border text-right" id="txtTotalCPTT"></b>
+                                    </td>
+                                    <td class="col-sm-1 no-padding-right"></td>
+
+                                </tr>
+                                <tr>
+                                    <td class="col-sm-1 text-center">
+                                        <span>1</span>
+                                    </td>
+
+                                    <td class="col-sm-6">
+                                        <span>Chi phí nguyên liệu, vật liệu, công cụ, dụng cụ, nhiên liệu, năng lượng trực tiếp</span>
+                                    </td>
+                                    <td class="col-sm-1">
+                                        <b>đồng/HK.Km</b>
+                                    </td>
+                                    <td class="no-padding-right">
+                                        <input type="number" name="txtCPNLVM" readonly="readonly" class="col-sm-12 value no-padding no-border text-right" id="txtCPNLBVM">
+                                    </td>
+                                    <td class="no-padding-right">
+                                        <input type="number" name="txtCPNLVM" class="col-sm-12 value no-padding text-right" id="txtCPNLVM">
+                                    </td>
+                                    <td class="col-sm-1">
+
+                                        <input type="number" readonly="readonly" name="txtCPNLRateVM" class="col-sm-12 value no-padding no-border text-center" id="txtCPNLRateVM">
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td class="col-sm-1 text-center">
+                                        <span>2</span>
+                                    </td>
+
+                                    <td class="col-sm-6">
+                                        <span>Chi phí nhân công trực tiếp</span>
+                                    </td>
+                                    <td class="col-sm-1">
+                                        <b>đồng/HK.Km</b>
+                                    </td>
+                                    <td class="no-padding-right">
+                                        <input type="number" name="txtCPNCTTVM" readonly="readonly" class="col-sm-12 value no-padding no-border text-right" id="txtCPNCTTBVM">
+                                    </td>
+                                    <td class="no-padding-right">
+                                        <input type="number" name="txtCPNCTTVM" class="col-sm-12 value no-padding text-right" id="txtCPNCTTVM">
+                                    </td>
+                                    <td class="col-sm-1 no-padding-right">
+
+                                        <input type="number" readonly="readonly" name="txtCPNCTTRateVM" class="col-sm-12 value no-padding no-border text-center" id="txtCPNCTTRateVM">
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td class="col-sm-1 text-center">
+                                        <span>3</span>
+                                    </td>
+
+                                    <td class="col-sm-6">
+                                        <span>Chi phí khấu hao máy móc, thiết bị trực tiếp (trường hợp được trích khấu hao)</span>
+                                    </td>
+                                    <td class="col-sm-1">
+                                        <b>đồng/HK.Km</b>
+                                    </td>
+                                    <td class="no-padding-right">
+                                        <input type="number" name="txtCPKHTBVM" readonly="readonly" class="col-sm-12 value no-padding no-border text-right" id="txtCPKHTBBVM" value="0">
+                                    </td>
+                                    <td class="no-padding-right">
+                                        <input type="number" name="txtCPKHTBVM" class="col-sm-12 value no-padding text-right" id="txtCPKHTBVM" value="0">
+                                    </td>
+                                    <td class="col-sm-1">
+
+                                        <input type="number" readonly="readonly" name="txtCPKHTBRateVM" class="col-sm-12 value no-padding no-border text-center" id="txtCPKHTBRateVM">
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td class="col-sm-1 text-center">
+                                        <span>4</span>
+                                    </td>
+
+                                    <td class="col-sm-6">
+                                        <span>Chi phí sản xuất kinh doanh (chưa tính ở mục 1,2,3) theo đặc thù</span>
+                                    </td>
+                                    <td class="col-sm-1">
+                                        <b>đồng/HK.Km</b>
+                                    </td>
+                                    <td class="no-padding-right">
+                                        <input type="number" name="txtCPSXKDDTVM" readonly="readonly" class="col-sm-12 value no-padding no-border text-right" id="txtCPSXKDDTBVM" value="0">
+                                    </td>
+                                    <td class="no-padding-right">
+                                        <input type="number" name="txtCPSXKDDTVM" class="col-sm-12 value no-padding text-right" id="txtCPSXKDDTVM" value="0">
+                                    </td>
+                                    <td class="col-sm-1 no-padding-right">
+
+                                        <input type="number" readonly="readonly" name="txtCPSXKDDTRateVM" class="col-sm-12 value no-padding no-border text-center" id="txtCPSXKDDTRateVM">
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td class="col-sm-1 text-center">
+                                        <b>II</b>
+                                    </td>
+
+                                    <td class="col-sm-6">
+                                        <b>Chi phí chung</b>
+                                    </td>
+                                    <td class="col-sm-1">
+                                        <b>đồng/HK.Km</b>
+                                    </td>
+                                    <td class="no-padding-right">
+                                        <b><input type="number" readonly="readonly" name="txtTotalCPCB" class="col-sm-12 value no-padding no-border text-right" id="txtTotalCPCB"></b>
+                                    </td>
+                                    <td class="no-padding-right">
+                                        <b><input type="number" readonly="readonly" name="txtTotalCPC" class="col-sm-12 value no-padding no-border text-right" id="txtTotalCPC"></b>
+                                    </td>
+                                    <td class="col-sm-1 no-padding-right"></td>
+
+                                </tr>
+                                <tr>
+                                    <td class="col-sm-1 text-center">
+                                        <span>5</span>
+                                    </td>
+
+                                    <td class="col-sm-6">
+                                        <span>Chi phí sản xuất chung</span>
+                                    </td>
+                                    <td class="col-sm-1">
+                                        <b>đồng/HK.Km</b>
+                                    </td>
+                                    <td class="no-padding-right">
+                                        <input type="number" name="txtCPSXCVM" readonly="readonly" class="col-sm-12 value no-padding no-border text-right" id="txtCPSXCBVM">
+                                    </td>
+                                    <td class="no-padding-right">
+                                        <input type="number" name="txtCPSXCVM" class="col-sm-12 value no-padding text-right" id="txtCPSXCVM">
+                                    </td>
+                                    <td class="col-sm-1">
+                                        <span></span>
+                                        <input type="number" readonly="readonly" name="txtCPSXCRateVM" class="col-sm-12 value no-padding no-border text-center" id="txtCPSXCRateVM">
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td class="col-sm-1 text-center">
+                                        <span>6</span>
+                                    </td>
+
+                                    <td class="col-sm-6">
+                                        <span>Chi phí tài chính (nếu có)</span>
+                                    </td>
+                                    <td class="col-sm-1">
+                                        <b>đồng/HK.Km</b>
+                                    </td>
+                                    <td class="no-padding-right">
+                                        <input type="number" name="txtCPTCVM" readonly="readonly" class="col-sm-12 value no-padding no-border text-right" id="txtCPTCBVM">
+                                    </td>
+                                    <td class="no-padding-right">
+                                        <input type="number" name="txtCPTCVM" class="col-sm-12 value no-padding text-right" id="txtCPTCVM">
+                                    </td>
+                                    <td class="col-sm-1 no-padding-right">
+                                        <input type="number" readonly="readonly" name="txtCPTCRateVM" class="col-sm-12 value no-border no-padding text-center " id="txtCPTCRateVM">
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td class="col-sm-1 text-center">
+                                        <span>7</span>
+                                    </td>
+
+                                    <td class="col-sm-6">
+                                        <span>Chi phí bán hàng</span>
+                                    </td>
+                                    <td class="col-sm-1">
+                                        <b>đồng/HK.Km</b>
+                                    </td>
+                                    <td class="no-padding-right">
+                                        <input type="number" name="txtCPBHVM" readonly="readonly" class="col-sm-12 value no-padding no-border text-right" id="txtCPBHBVM">
+                                    </td>
+                                    <td class="no-padding-right">
+                                        <input type="number" name="txtCPBHVM" class="col-sm-12 value no-padding text-right" id="txtCPBHVM">
+                                    </td>
+                                    <td class="col-sm-1 no-padding-right">
+                                        <span></span>
+                                        <input type="number" readonly="readonly" name="txtCPBHRateVM" class="col-sm-12 value no-padding no-border text-center" id="txtCPBHRateVM">
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td class="col-sm-1 text-center">
+                                        <span>8</span>
+                                    </td>
+
+                                    <td class="col-sm-6">
+                                        <span>Chi phí quản lý</span>
+                                    </td>
+                                    <td class="col-sm-1">
+                                        <b>đồng/HK.Km</b>
+                                    </td>
+                                    <td class="no-padding-right">
+                                        <input type="number" name="txtCPQLVM" readonly="readonly" class="col-sm-12 value no-padding no-border text-right" id="txtCPQLBVM">
+                                    </td>
+                                    <td class="no-padding-right">
+                                        <input type="number" name="txtCPQLVM" class="col-sm-12 value no-padding text-right" id="txtCPQLVM">
+                                    </td>
+                                    <td class="col-sm-1 no-padding-right">
+                                        <span></span>
+                                        <input type="number" readonly="readonly" name="txtCPQLRateVM" class="col-sm-12 value no-padding no-border text-center" id="txtCPQLRateVM">
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td class="col-sm-1 text-center"></td>
+
+                                    <td class="col-sm-6">
+                                        <b>Tổng chí phí SXKD (TC)</b>
+                                    </td>
+                                    <td class="col-sm-1">
+                                        <b>đồng/HK.Km</b>
+                                    </td>
+                                    <td class="no-padding-right">
+                                        <b><input type="number" name="txtTotalB" readonly="readonly" class="col-sm-12 value no-padding no-border text-right" id="txtTotalKDB"></b>
+                                    </td>
+                                    <td class="no-padding-right">
+                                        <b><input type="number" name="txtTotalk" readonly="readonly" class="col-sm-12 value no-padding no-border text-right" id="txtTotalKD"></b>
+                                    </td>
+                                    <td class="col-sm-1 no-padding-right">
+                                        <span></span>
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td class="col-sm-1 text-center">
+                                        <b>C</b>
+                                    </td>
+
+                                    <td class="col-sm-6">
+                                        <b>Giá thành/vé (Chí phí x quãng đường)</b>
+                                    </td>
+                                    <td class="col-sm-1">
+                                        <b>đồng/giá vé</b>
+                                    </td>
+                                    <td class="no-padding-right">
+                                        <b><input type="number" name="txtGTVBVM" readonly="readonly" class="col-sm-12 value no-padding no-border text-right" id="txtGTVBVM"></b>
+                                    </td>
+                                    <td class="no-padding-right">
+                                        <input type="number" name="txtGTVVM" class="col-sm-12 value no-padding text-right" id="txtGTVVM">
+                                    </td>
+                                    <td class="col-sm-1 no-padding-right">
+                                        <span></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-sm-1 text-center">
+                                        <b>D</b>
+                                    </td>
+                                    <td class="col-sm-6">
+                                        <b>Lợi nhuận dự kiến</b>
+                                    </td>
+                                    <td class="col-sm-1">
+                                        <b>đồng/giá vé</b>
+                                    </td>
+                                    <td class="no-padding-right">
+                                        <input type="number" name="txtLoinhuanDukienBVM" readonly="readonly" class="col-sm-12 value no-padding no-border text-right" id="txtLoinhuanDukienBVM">
+                                    </td>
+                                    <td class="no-padding-right">
+                                        <input type="number" name="txtLoinhuanDukienVM" class="col-sm-12 value no-padding text-right" id="txtLoinhuanDukienVM">
+
+                                    </td>
+                                    <td class="col-sm-1 no-padding-right">
+                                        @*<input type="number" readonly="readonly" name="txtLoiNhuanDukienRateVM" class="col-sm-12 value no-padding no-border text-center" id="txtLoiNhuanDukienRateVM">*@
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-sm-1 text-center">
+                                        <b>E</b>
+                                    </td>
+                                    <td class="col-sm-6">
+                                        <b>Giá vé chưa thuế (C+D)</b>
+                                    </td>
+                                    <td class="col-sm-1">
+                                        <b>đồng/giá vé</b>
+                                    </td>
+                                    <td class="no-padding-right">
+                                        <b><input type="number" name="txtGVCTBVM" readonly="readonly" class="col-sm-12 value no-padding no-border text-right" id="txtGVCTBVM"></b>
+                                    </td>
+                                    <td class="no-padding-right">
+                                        <b><input type="number" name="txtGVCTVM" readonly="readonly" class="col-sm-12 value no-padding no-border text-right" id="txtGVCTVM"></b>
+                                    </td>
+                                    <td class="col-sm-1 no-padding-right">
+                                        <span></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-sm-1 text-center">
+                                        <b>F</b>
+                                    </td>
+                                    <td class="col-sm-6">
+                                        <b>Thuế GTGT đầu ra 10%</b>
+                                    </td>
+                                    <td class="col-sm-1">
+                                        <b></b>
+                                    </td>
+                                    <td class="no-padding-right">
+                                        <b><input type="number" name="txtVATBVM" readonly="readonly" class="col-sm-12 value no-padding no-border text-right" id="txtVATBVM"></b>
+                                    </td>
+                                    <td class="no-padding-right">
+                                        <b><input type="number" name="txtVATVM" readonly="readonly" class="col-sm-12 value no-padding no-border text-right" id="txtVATVM"></b>
+                                    </td>
+                                    <td class="col-sm-1 no-padding-right">
+                                        <span></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-sm-1 text-center">
+                                        <b>G</b>
+                                    </td>
+                                    <td class="col-sm-6">
+                                        <b>Giá vé dự kiến (đã bao gồm VAT 10%)</b>
+                                    </td>
+                                    <td class="col-sm-1">
+                                        <b>đồng/giá vé</b>
+                                    </td>
+                                    <td class="no-padding-right">
+                                        <b><input type="number" name="txtGVDKBVM" readonly="readonly" class="col-sm-12 value no-padding no-border text-right" id="txtGVDKBVM"></b>
+                                    </td>
+                                    <td class="no-padding-right">
+                                        <b> <input type="number" name="txtGVDKVM" readonly="readonly" class="col-sm-12 value no-padding no-border text-right" id="txtGVDKVM"></b>
+                                    </td>
+                                    <td class="col-sm-1 no-padding-right">
+                                        <span></span>
+                                    </td>
+                                </tr>
+                                <tr>
+
+                                    <td class="col-sm-1 text-center"></td>
+                                    <td class="col-sm-6">
+                                        <b class="pull-right clearfix">Trạng thái</b>
+                                    </td>
+                                    <td class="col-sm-1">
+                                        <b></b>
+                                    </td>
+                                    <td class="no-padding-right" colspan="3">
+                                        <select id="ddlDongiaStatus" class="form-control"></select>
+                                    </td>
+
+                                    @*<td class="col-sm-1"></td>*@
+                                </tr>
+                                <tr>
+                                    <td class="col-sm-12" colspan="6">
+                                        <textarea class="form-control " id="txtNoteVM" name="txtNoteVM" placeholder="Ghi chú" rows="5" type="text"></textarea>
+                                    </td>
+                                </tr>
+
+
+
+                            </tbody>
+                        </table>
+
+
+                        <div class="form-group">
+                            <div class="pull-right">
+                                <button type="button" id="btnSave" class="btn btn-success">Save</button>
+                                <button type="button" id="btnCancel" data-dismiss="modal" class="btn btn-danger">Cancel</button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

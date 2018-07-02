@@ -1,0 +1,41 @@
+﻿<div id="modalDKTuyens" class="bootbox modal modal-darkorange in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Tuyến đã đăng ký</h4>
+            </div>
+            <div class="modal-body">
+                <div id="horizontal-form">
+                    <form class="form-horizontal" role="form" id="frmMaintainance">
+                        <input type="hidden" id="hidVTTuyenId" value="" />
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <td>Tuyến</td>
+                                    
+                                    <td>#</td>
+                                </tr>
+                            </thead>
+                            <tbody id="tableDKTuyenContent"></tbody>
+                           
+                        </table>
+                    </form>
+
+                    <script type="x-tmpl-mustache" id="templateTableTuyenOption">
+                        <tr data-id="{{Id}}">
+                            <td>{{{Tuyen}}}</td>
+                            <td scope="row">
+                                <a href="#modalAddDongia" data-toggle="modal" data-dismiss="modal" data-id="{{Id}}" data-kc="{{Khoangcach}}" class="btn btn-xs btn-success btnAddDongia"><i class="fa fa-money"></i></a>                            </td>
+                        </tr>
+                    </script>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="button" data-dismiss="modal" class="btn btn-danger">Đóng</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

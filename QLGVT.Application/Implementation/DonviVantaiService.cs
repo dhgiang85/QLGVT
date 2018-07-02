@@ -8,6 +8,7 @@ using AutoMapper.QueryableExtensions;
 using Microsoft.EntityFrameworkCore;
 using QLGVT.Application.Interfaces;
 using QLGVT.Application.ViewModels.QuanLyDonVi;
+using QLGVT.Application.ViewModels.QuanlyGia;
 using QLGVT.Data.Entities;
 using QLGVT.Data.Enums;
 using QLGVT.Data.IRepositories;
@@ -22,13 +23,16 @@ namespace QLGVT.Application.Implementation
         private IUnitOfWork _unitOfWork;
         private IDonviVantaiReposiory _donviVantaiReposiory;
         private IDangkyTuyenRepository _dangkyTuyenRepository;
-        
+        private IKekhaiGiaRepository _kekhaiGiaRepository;
+
+
         public DonviVantaiService(IDonviVantaiReposiory donviVantaiReposiory,
             IDangkyTuyenRepository dangkyTuyenRepository,
+            IKekhaiGiaRepository kekhaiGiaRepository,
             IUnitOfWork unitOfWork)
         {
             _donviVantaiReposiory = donviVantaiReposiory;
-
+            _kekhaiGiaRepository = kekhaiGiaRepository;
             _dangkyTuyenRepository = dangkyTuyenRepository;
 
 
@@ -112,8 +116,12 @@ namespace QLGVT.Application.Implementation
             return _donviVantaiReposiory.FindAll(x => x.Status == Status.Active).ProjectTo<DonviVantaiViewModel>().ToListAsync();
 
         }
+        public void AddDongia(KekhaiGiaViewModel KKGVm)
+        {
+            var kkg = Mapper.Map<KekhaiGiaViewModel, KekhaiGia>(KKGVm);
+            _kekhaiGiaRepository.Add(kkg);
+        }
 
-        
         public void Save()
         {
             _unitOfWork.Commit();
@@ -121,6 +129,15 @@ namespace QLGVT.Application.Implementation
         public void Dispose()
         {
             GC.SuppressFinalize(this);
+        }
+
+        public KekhaiGiaCalculatorViewModel GetBaseValue(int DKTuyenId)
+        {
+            var kkg = _kekhaiGiaRepository.
+                FindAll(x => x.KekhaiGiaStatus == KekhaiGiaStatus.NewPriceAccepted & x.DangkyTuyenId == DKTuyenId)
+                .OrderByDescending(x => x.DateApplied).FirstOrDefault();
+            var kkgvm = Mapper.Map<KekhaiGia, KekhaiGiaCalculatorViewModel>(kkg);
+            return kkgvm;
         }
     }
 }

@@ -227,6 +227,9 @@ namespace QLGVT.Data.EF.Migrations
 
                     b.Property<int>("DonviVantaiId");
 
+                    b.Property<string>("Note")
+                        .HasMaxLength(128);
+
                     b.Property<int>("Status");
 
                     b.Property<int>("TuyenId");
@@ -319,6 +322,109 @@ namespace QLGVT.Data.EF.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Functions");
+                });
+
+            modelBuilder.Entity("QLGVT.Data.Entities.KekhaiGia", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<decimal>("CPBH");
+
+                    b.Property<decimal?>("CPBHRate");
+
+                    b.Property<decimal>("CPKHTB");
+
+                    b.Property<decimal?>("CPKHTBRate");
+
+                    b.Property<decimal>("CPNCTT");
+
+                    b.Property<decimal?>("CPNCTTRate");
+
+                    b.Property<decimal>("CPNL");
+
+                    b.Property<decimal?>("CPNLRate");
+
+                    b.Property<decimal>("CPQL");
+
+                    b.Property<decimal?>("CPQLRate");
+
+                    b.Property<decimal>("CPSXC");
+
+                    b.Property<decimal?>("CPSXCRate");
+
+                    b.Property<decimal>("CPSXKDDT");
+
+                    b.Property<decimal?>("CPSXKDDTRate");
+
+                    b.Property<decimal>("CPTC");
+
+                    b.Property<decimal?>("CPTCRate");
+
+                    b.Property<int>("DangkyTuyenId");
+
+                    b.Property<DateTime>("DateAccepted");
+
+                    b.Property<DateTime>("DateApplied");
+
+                    b.Property<DateTime>("DateCreated");
+
+                    b.Property<DateTime>("DateModified");
+
+                    b.Property<decimal>("GiathanhVe");
+
+                    b.Property<int?>("KekhaiGiaBaseId");
+
+                    b.Property<int>("KekhaiGiaStatus");
+
+                    b.Property<decimal>("LoinhuanDukien");
+
+                    b.Property<string>("Note");
+
+                    b.Property<decimal>("SLTG");
+
+                    b.Property<decimal?>("SLTGRate");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DangkyTuyenId");
+
+                    b.ToTable("KekhaiGias");
+                });
+
+            modelBuilder.Entity("QLGVT.Data.Entities.KekhaiGiaRate", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("varchar(128)");
+
+                    b.Property<decimal>("CPBHRate");
+
+                    b.Property<decimal>("CPKHTBRate");
+
+                    b.Property<decimal>("CPNCTTRate");
+
+                    b.Property<decimal>("CPNLRate");
+
+                    b.Property<decimal>("CPQLRate");
+
+                    b.Property<decimal>("CPSXCTRate");
+
+                    b.Property<decimal>("CPSXKDDTRate");
+
+                    b.Property<decimal>("CPTCRate");
+
+                    b.Property<DateTime>("DateCreated");
+
+                    b.Property<DateTime>("DateModified");
+
+                    b.Property<decimal>("SLTGRate");
+
+                    b.Property<int>("Status");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("KekhaiGiaRates");
                 });
 
             modelBuilder.Entity("QLGVT.Data.Entities.Permission", b =>
@@ -490,6 +596,14 @@ namespace QLGVT.Data.EF.Migrations
                     b.HasOne("QLGVT.Data.Entities.Tuyen", "Tuyen")
                         .WithMany()
                         .HasForeignKey("TuyenId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("QLGVT.Data.Entities.KekhaiGia", b =>
+                {
+                    b.HasOne("QLGVT.Data.Entities.DangkyTuyen", "DangkyTuyen")
+                        .WithMany()
+                        .HasForeignKey("DangkyTuyenId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

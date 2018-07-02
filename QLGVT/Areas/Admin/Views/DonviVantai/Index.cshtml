@@ -6,10 +6,18 @@
 
     <script src="~/admin-app/controllers/donvi-vantai/index.js"></script>
     <script src="~/admin-app/controllers/donvi-vantai/dangkytuyen.js"></script>
+    <script src="~/admin-app/controllers/donvi-vantai/tuyenoption.js"></script>
+    <script src="~/admin-app/controllers/donvi-vantai/dongia.js"></script>
+    <script src="~/lib/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
     <script>
         var DonviVantai = new DonviVantaiController();
         DonviVantai.initialize();
+
+
     </script>
+}
+@section Styles{
+    <link href="~/lib/bootstrap-datepicker/dist/css/bootstrap-datepicker.css" rel="stylesheet" />
 }
 <div class="page-title">
     <div class="title_left">
@@ -55,7 +63,7 @@
                             <th>Giấy phép Kinh doanh</th>
                             <th>Loại hình Kinh doanh</th>
                             <th>Status</th>
-                            <th width="12%">#</th>
+                            <th width="15%">#</th>
                         </tr>
                     </thead>
                     <tbody id="tbl-content"></tbody>
@@ -100,9 +108,12 @@
             <button class="btn btn-default btn-xs btnEdit" data-id="{{Id}}"><i class="fa fa-pencil"></i></button>
             <button class="btn btn-danger btn-xs btnDelete" data-id="{{Id}}"><i class="fa fa-trash"></i></button>
             <a href="#" data-id="{{Id}}" class="btn btn-default  btn-xs btnDSDangky"><i class="fa fa-truck"></i></a>
+            <a href="#" data-id="{{Id}}" class="btn btn-default  btn-xs btnTuyenOption"><i class="fa fa-money"></i></a>
 
         </th>
     </tr>
 </script>
 @Html.Partial("_AddEditModal.cshtml")
 @Html.Partial("_QuanlyTuyenModal.cshtml")
+@Html.Partial("_TuyenOptionModal.cshtml")
+@Html.Partial("_AddDongiaModal.cshtml")

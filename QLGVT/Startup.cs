@@ -81,7 +81,7 @@ namespace QLGVT
             services.AddTransient(typeof(IRepository<,>), typeof(EFRepository<,>));
 
             services.AddScoped<IUserClaimsPrincipalFactory<AppUser>, CustomClaimsPrincipalFactory>();
-            
+
             services.AddMvc().AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
             //services.AddMvc();
 
@@ -95,9 +95,7 @@ namespace QLGVT
             services.AddTransient<ISystemConfigRepository, SystemConfigRepository>();
 
             services.AddTransient<IFooterRepository, FooterRepository>();
-
-
-
+            
             services.AddTransient<IDonviVantaiReposiory, DonviVantaiReposiory>();
 
             services.AddTransient<IBenxeRepository, BenxeRepository>();
@@ -105,6 +103,10 @@ namespace QLGVT
             services.AddTransient<ITuyenRepository, TuyenRepository>();
 
             services.AddTransient<IDangkyTuyenRepository, DangkyTuyenRepository>();
+
+            services.AddTransient<IKekhaiGiaRateRepository, KekhaiGiaRateRepository>();
+
+            services.AddTransient<IKekhaiGiaRepository, KekhaiGiaRepository>();
 
             //Serrvices
             services.AddTransient<IFunctionService, FunctionService>();
@@ -116,14 +118,14 @@ namespace QLGVT
             services.AddTransient<IAuthorizationHandler, BaseResourceAuthorizationHandler>();
 
             services.AddTransient<ICommonService, CommonService>();
-
-
+            
             services.AddTransient<IDonviVantaiService, DonviVantaiService>();
 
             services.AddTransient<IBenxeService, BenxeService>();
 
             services.AddTransient<ITuyenService, TuyenService>();
 
+            services.AddTransient<IKekhaiGiaService, KekhaiGiaService>();
             
         }
 

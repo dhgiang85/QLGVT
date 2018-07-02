@@ -1,7 +1,8 @@
 ﻿var mcst = {
     configs: {
         pageSize: 10,
-        pageIndex: 1
+        pageIndex: 1,
+        Rate: 3.0
     },
     notify: function (message, type) {
         $.notify(message, {
@@ -59,7 +60,8 @@
     dateFormatJson: function (datetime) {
         if (datetime == null || datetime == '')
             return '';
-        var newdate = new Date(parseInt(datetime.substr(6)));
+        //var newdate = new Date(parseInt(datetime.substr(6)));
+        var newdate = new Date(datetime);
         var month = newdate.getMonth() + 1;
         var day = newdate.getDate();
         var year = newdate.getFullYear();
@@ -78,7 +80,8 @@
     dateTimeFormatJson: function (datetime) {
         if (datetime == null || datetime == '')
             return '';
-        var newdate = new Date(parseInt(datetime.substr(6)));
+        //var newdate = new Date(parseInt(datetime.substr(6)));
+        var newdate = new Date(datetime);
         var month = newdate.getMonth() + 1;
         var day = newdate.getDate();
         var year = newdate.getFullYear();
@@ -120,6 +123,11 @@
         var a = number.toFixed(precision).split('.');
         a[0] = a[0].replace(/\d(?=(\d{3})+$)/g, '$&,');
         return a.join('.');
+    },
+    calc(theform) {
+        var num = theform.original.value, rounded = theform.rounded
+        var with2Decimals = num.toString().match(/^-?\d+(?:\.\d{0,2})?/)[0]
+        rounded.value = with2Decimals
     },
     unflattern: function (arr) {
         //var map = {};

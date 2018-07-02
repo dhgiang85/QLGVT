@@ -15,6 +15,8 @@
     <Compile Remove="Migrations\20180525051415_intial.cs" />
     <Compile Remove="Migrations\20180525051550_intial.cs" />
     <Compile Remove="Migrations\20180525051836_intial.cs" />
+    <Compile Remove="Migrations\20180529015747_addkekhaigia.cs" />
+    <Compile Remove="Migrations\20180530013636_addIntial.cs" />
   </ItemGroup>
 
   <ItemGroup>

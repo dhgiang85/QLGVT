@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace QLGVT.Data.EF.Migrations
 {
-    public partial class intial : Migration
+    public partial class @new : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -124,6 +124,29 @@ namespace QLGVT.Data.EF.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Functions", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "KekhaiGiaRates",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "varchar(128)", nullable: false),
+                    CPBHRate = table.Column<decimal>(nullable: false),
+                    CPKHTBRate = table.Column<decimal>(nullable: false),
+                    CPNCTTRate = table.Column<decimal>(nullable: false),
+                    CPNLRate = table.Column<decimal>(nullable: false),
+                    CPQLRate = table.Column<decimal>(nullable: false),
+                    CPSXCTRate = table.Column<decimal>(nullable: false),
+                    CPSXKDDTRate = table.Column<decimal>(nullable: false),
+                    CPTCRate = table.Column<decimal>(nullable: false),
+                    DateCreated = table.Column<DateTime>(nullable: false),
+                    DateModified = table.Column<DateTime>(nullable: false),
+                    SLTGRate = table.Column<decimal>(nullable: false),
+                    Status = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_KekhaiGiaRates", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -340,6 +363,7 @@ namespace QLGVT.Data.EF.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     DonviVantaiId = table.Column<int>(nullable: false),
+                    Note = table.Column<string>(maxLength: 128, nullable: true),
                     Status = table.Column<int>(nullable: false),
                     TuyenId = table.Column<int>(nullable: false)
                 },
@@ -356,6 +380,51 @@ namespace QLGVT.Data.EF.Migrations
                         name: "FK_DangkyTuyens_Tuyens_TuyenId",
                         column: x => x.TuyenId,
                         principalTable: "Tuyens",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "KekhaiGias",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    CPBH = table.Column<decimal>(nullable: false),
+                    CPBHRate = table.Column<decimal>(nullable: true),
+                    CPKHTB = table.Column<decimal>(nullable: false),
+                    CPKHTBRate = table.Column<decimal>(nullable: true),
+                    CPNCTT = table.Column<decimal>(nullable: false),
+                    CPNCTTRate = table.Column<decimal>(nullable: true),
+                    CPNL = table.Column<decimal>(nullable: false),
+                    CPNLRate = table.Column<decimal>(nullable: true),
+                    CPQL = table.Column<decimal>(nullable: false),
+                    CPQLRate = table.Column<decimal>(nullable: true),
+                    CPSXC = table.Column<decimal>(nullable: false),
+                    CPSXCRate = table.Column<decimal>(nullable: true),
+                    CPSXKDDT = table.Column<decimal>(nullable: false),
+                    CPSXKDDTRate = table.Column<decimal>(nullable: true),
+                    CPTC = table.Column<decimal>(nullable: false),
+                    CPTCRate = table.Column<decimal>(nullable: true),
+                    DangkyTuyenId = table.Column<int>(nullable: false),
+                    DateAccepted = table.Column<DateTime>(nullable: false),
+                    DateApplied = table.Column<DateTime>(nullable: false),
+                    DateCreated = table.Column<DateTime>(nullable: false),
+                    DateModified = table.Column<DateTime>(nullable: false),
+                    GiathanhVe = table.Column<decimal>(nullable: false),
+                    KekhaiGiaStatus = table.Column<int>(nullable: false),
+                    LoinhuanDukien = table.Column<decimal>(nullable: false),
+                    Note = table.Column<string>(nullable: true),
+                    SLTG = table.Column<decimal>(nullable: false),
+                    SLTGRate = table.Column<decimal>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_KekhaiGias", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_KekhaiGias_DangkyTuyens_DangkyTuyenId",
+                        column: x => x.DangkyTuyenId,
+                        principalTable: "DangkyTuyens",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -400,6 +469,11 @@ namespace QLGVT.Data.EF.Migrations
                 column: "TuyenId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_KekhaiGias_DangkyTuyenId",
+                table: "KekhaiGias",
+                column: "DangkyTuyenId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Permissions_FunctionId",
                 table: "Permissions",
                 column: "FunctionId");
@@ -438,10 +512,13 @@ namespace QLGVT.Data.EF.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "DangkyTuyens");
+                name: "Footers");
 
             migrationBuilder.DropTable(
-                name: "Footers");
+                name: "KekhaiGiaRates");
+
+            migrationBuilder.DropTable(
+                name: "KekhaiGias");
 
             migrationBuilder.DropTable(
                 name: "Permissions");
@@ -456,16 +533,19 @@ namespace QLGVT.Data.EF.Migrations
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
-                name: "DonviVantais");
-
-            migrationBuilder.DropTable(
-                name: "Tuyens");
+                name: "DangkyTuyens");
 
             migrationBuilder.DropTable(
                 name: "Functions");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
+
+            migrationBuilder.DropTable(
+                name: "DonviVantais");
+
+            migrationBuilder.DropTable(
+                name: "Tuyens");
 
             migrationBuilder.DropTable(
                 name: "Benxes");

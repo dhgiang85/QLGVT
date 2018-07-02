@@ -37,6 +37,11 @@ namespace QLGVT.Data.EF
         public DbSet<Tuyen> Tuyens { set; get; }
         public DbSet<DangkyTuyen> DangkyTuyens { set; get; }
 
+        public DbSet<KekhaiGia> KekhaiGias { get; set; }
+
+        public DbSet<KekhaiGiaRate> KekhaiGiaRates { get; set; }
+
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             #region Identity Config
@@ -60,6 +65,7 @@ namespace QLGVT.Data.EF
             builder.AddConfiguration(new FunctionConfiguration());
             builder.AddConfiguration(new FooterConfiguration());
             builder.AddConfiguration(new TuyenConfiguration());
+            builder.AddConfiguration(new KekhaiRateConfiguration());
             base.OnModelCreating(builder);
         }
 

@@ -1,11 +1,15 @@
 ﻿var DonviVantaiController = function () {
     var dangkytuyen = new DangkyTuyen();
+    var tuyenoption = new TuyenOption();
+    var dongia = new Dongia();
     var cachedObj = {
         LHKinhdoanh: []
     }
     this.initialize = function () {
         $.when(loadLHKinhdoanh(),
-            dangkytuyen.initialize()
+            dangkytuyen.initialize(),
+            tuyenoption.initialize(),
+            dongia.initialize()
             ).done(function() {
             loadData();});
 

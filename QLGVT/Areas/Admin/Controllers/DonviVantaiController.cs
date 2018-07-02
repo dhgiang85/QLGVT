@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc.ModelBinding;
 using QLGVT.Application.Interfaces;
 using QLGVT.Application.ViewModels.Common;
 using QLGVT.Application.ViewModels.QuanLyDonVi;
+using QLGVT.Application.ViewModels.QuanlyGia;
 using QLGVT.Data.Enums;
 using QLGVT.Extensions;
 using QLGVT.Utilities.Extensions;
@@ -82,6 +83,7 @@ namespace QLGVT.Areas.Admin.Controllers
                 return new OkObjectResult(donviVantaiVm);
             }
         }
+
         [HttpPost]
         public IActionResult SaveTuyens(int donvivantaiId, List<DangkyTuyenViewModel> tuyens)
         {
@@ -111,11 +113,55 @@ namespace QLGVT.Areas.Admin.Controllers
                 return new OkObjectResult(id);
             }
         }
-
+        [HttpPost]
+        public IActionResult SaveDongia(KekhaiGiaViewModel KKGVm)
+        {
+            if (!ModelState.IsValid)
+            {
+                IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
+                return new BadRequestObjectResult(allErrors);
+            }
+            else
+            {
+                //productVm.SeoAlias = TextHelper.ToUnsignString(productVm.Name);
+                if (KKGVm.Id == 0)
+                {
+                    _donviVantaiService.AddDongia(KKGVm);
+                }
+                else
+                {
+                   // _donviVantaiService.Update(donviVantaiVm);
+                }
+                _donviVantaiService.Save();
+                return new OkObjectResult(KKGVm);
+            }
+        }
         [HttpGet]
         public IActionResult GetTuyens(int donvivantaiId)
         {
             var model = _donviVantaiService.GetTuyens(donvivantaiId);
+
+            return new OkObjectResult(model);
+        }
+        [HttpGet]
+        public IActionResult GetGiaSoSanh(int DKTuyenId)
+        {
+            var model = _donviVantaiService.GetBaseValue(DKTuyenId);
+
+            return new OkObjectResult(model);
+        }
+
+        
+
+        [HttpGet]
+        public IActionResult GetDKTuyens(int donvivantaiId)
+        {
+            var model = _donviVantaiService.GetTuyens(donvivantaiId).Where(x=>x.Status==Status.Active).Select(x=> new
+            {
+                Id = x.Id,
+                Tuyen = x.Tuyen.Xuatphat.Ten +" - " +x.Tuyen.Diemden.Ten + " ("+ x.Tuyen.Khoangcach+") ",
+                Khoangcach = x.Tuyen.Khoangcach.ToString()
+            }).ToList();
 
             return new OkObjectResult(model);
         }

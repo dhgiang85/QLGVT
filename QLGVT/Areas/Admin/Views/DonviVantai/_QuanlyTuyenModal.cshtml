@@ -14,7 +14,7 @@
                                 <tr>
                                     <td>Tuyến</td>
                                     <td>Kích hoạt</td>
-                                    <td></td>
+                                    <td>#</td>
                                 </tr>
                             </thead>
                             <tbody id="tableTuyenContent"></tbody>
@@ -32,7 +32,10 @@
                         <tr data-id="{{Id}}">
                             <td>{{{Tuyens}}}</td>
                             <td>{{{Status}}}</td>
-                            <td><button class="btn btn-xs btn-danger btnDeleteQuantity" type="button"><i class="fa fa-trash"></i></button></td>
+                            <td scope="row">
+                                <button class="btn btn-xs btn-danger btnDeleteQuantity" type="button"><i class="fa fa-trash"></i></button>
+                                
+                            </td>
                         </tr>
                     </script>
                 </div>
@@ -40,8 +43,7 @@
             <div class="modal-footer">
                 <div class="col-sm-offset-2 col-sm-10">
                     <button type="button" id="btnSaveQuantity" class="btn btn-success">Lưu lại</button>
-
-                    <button type="button" data-dismiss="modal" class="btn btn-danger">Đóng</button>
+                                        <button type="button" data-dismiss="modal" class="btn btn-danger">Đóng</button>
                 </div>
             </div>
         </div>

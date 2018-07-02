@@ -1,6 +1,7 @@
 ﻿using System;
 using AutoMapper;
 using QLGVT.Application.ViewModels.QuanLyDonVi;
+using QLGVT.Application.ViewModels.QuanlyGia;
 using QLGVT.Application.ViewModels.System;
 using QLGVT.Data.Entities;
 
@@ -30,7 +31,20 @@ namespace QLGVT.Application.AutoMapper
                 .ConstructUsing(c => new Tuyen(c.XuatphatId, c.DiemdenId, c.Khoangcach, c.Status));
 
             CreateMap<DangkyTuyenViewModel, DangkyTuyen>()
-                .ConstructUsing(c => new DangkyTuyen(c.Id,c.DonviVantaiId, c.TuyenId, c.Status));
+                .ConstructUsing(c => new DangkyTuyen(c.Id,c.DonviVantaiId, c.TuyenId, c.Note, c.Status));
+
+            CreateMap<KekhaiGiaViewModel, KekhaiGia>()
+                .ConstructUsing(c => new KekhaiGia(c.SLTG, c.SLTGRate,
+                            c.CPNL, c.CPNLRate, 
+                            c.CPNCTT, c.CPNCTTRate, 
+                            c.CPKHTB, c.CPKHTBRate, 
+                            c.CPSXKDDT, c.CPSXKDDTRate, 
+                            c.CPSXC, c.CPSXCRate,
+                            c.CPTC, c.CPTCRate, 
+                            c.CPBH, c.CPBHRate, 
+                            c.CPQL, c.CPQLRate,
+                            c.LoinhuanDukien,c.GiathanhVe,c.Note,
+                            c.DangkyTuyenId,c.KekhaiGiaBaseId, c.KekhaiGiaStatus));
         }
     }
 }

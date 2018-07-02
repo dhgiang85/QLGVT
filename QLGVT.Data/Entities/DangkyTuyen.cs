@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 using QLGVT.Data.Enums;
@@ -12,20 +13,22 @@ namespace QLGVT.Data.Entities
     {
         public DangkyTuyen()
         {
-
+            Tuyen = new Tuyen();
         }
-        public DangkyTuyen(int id, int donviVantaiId, int tuyenId, Status status)
+        public DangkyTuyen(int id, int donviVantaiId, int tuyenId, string note, Status status)
         {
             Id = id;
             DonviVantaiId = donviVantaiId;
             TuyenId = tuyenId;
+            Note = note;
             Status = status;
         }
 
-        public DangkyTuyen(int donviVantaiId, int tuyenId, Status status)
+        public DangkyTuyen(int donviVantaiId, int tuyenId, string note, Status status)
         {
             DonviVantaiId = donviVantaiId;
             TuyenId = tuyenId;
+            Note = note;
             Status = status;
         }
 
@@ -41,6 +44,11 @@ namespace QLGVT.Data.Entities
         [ForeignKey("TuyenId")]
         public virtual Tuyen Tuyen { get; set; }
 
+        [StringLength(128)]
+        public string Note { get; set; }
+
         public Status Status { get; set; }
+
+   
     }
 }
